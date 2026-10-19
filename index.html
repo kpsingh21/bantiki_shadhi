@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Krishna & Ankita (Lalu & Banti) - Wedding Invitation | February 25-27, 2027</title>
+  
+  <meta name="description" content="Royal Rajput Wedding Invitation for Krishna (Lalu) & Ankita (Banti). Celebrating Haldi, Mehndi, Sangeet, Ganga Pujan, Mandap, and Baarat from 25 to 27 February 2027 at Badiya Gyasur.">
+  <meta name="theme-color" content="#fce4ec">
+
+  <!-- Open Graph for WhatsApp & Social Sharing -->
+  <meta property="og:title" content="Krishna (Lalu) & Ankita (Banti) - Royal Wedding Invitation">
+  <meta property="og:description" content="॥ जय माँ भवानी ॥ We warmly invite you to celebrate the wedding of Krishna (Lalu) & Ankita (Banti) from 25 to 27 February 2027 at Badiya Gyasur. Click to view events, family details, countdown, and directions!">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Luxury Serif, Royal Devanagari & Modern Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Poppins:wght@400;500;600;700&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&family=Yatra+One&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Utility Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-blush-white">
+  <!-- SVG Global Gradients for Authentic Hindu Wedding Vector Icons -->
+  <svg width="0" height="0" class="svg-defs-hidden" aria-hidden="true">
+    <defs>
+      <!-- Royal Gold Gradient -->
+      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff0a6" />
+        <stop offset="50%" stop-color="#ffd54f" />
+        <stop offset="100%" stop-color="#c59b27" />
+      </linearGradient>
+      <!-- Haldi Gold Gradient -->
+      <linearGradient id="haldiGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff59d" />
+        <stop offset="50%" stop-color="#fbc02d" />
+        <stop offset="100%" stop-color="#f57f17" />
+      </linearGradient>
+      <!-- Kalash Copper/Brass Gradient -->
+      <linearGradient id="kalashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffe082" />
+        <stop offset="40%" stop-color="#ffb300" />
+        <stop offset="100%" stop-color="#d84315" />
+      </linearGradient>
+      <!-- Mandap Royal Gradient -->
+      <linearGradient id="mandapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffcc80" />
+        <stop offset="50%" stop-color="#ef6c00" />
+        <stop offset="100%" stop-color="#b71c1c" />
+      </linearGradient>
+      <!-- Baarat Crimson Gradient -->
+      <linearGradient id="baaratGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f48fb1" />
+        <stop offset="50%" stop-color="#c2185b" />
+        <stop offset="100%" stop-color="#880e4f" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Background Image Overlay Container (White & Baby Pink Luxury Palette) -->
+  <div class="bg-media" id="bgMedia"></div>
+  <div class="bg-overlay"></div>
+  <div class="bg-mandala-pattern"></div>
+  
+  <!-- Canvas for floating rose petals & magical sparkles -->
+  <canvas id="petalsCanvas"></canvas>
+
+  <!-- Top Floating Action Toolbar -->
+  <header class="top-nav">
+    <div class="brand-tag">
+      <span class="rajput-insignia">⚔️</span>
+      <span id="navBrandText">BantiKiShadhi</span>
+    </div>
+    
+    <div class="action-buttons">
+      <!-- Royal Speaker Music Button (Default Playing) -->
+      <button type="button" class="speaker-btn playing" id="speakerBtn" title="Mute / Play Royal Wedding Music">
+        <i class="fa-solid fa-volume-high" id="speakerIcon"></i>
+        <span class="sound-wave-ring"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Royal Sticky Toggle Bar: The Wedding -> Events -> Countdown -> Location -->
+  <div class="royal-toggle-container">
+    <nav class="royal-toggle-bar" id="royalToggleBar" aria-label="Wedding sections navigation">
+      <a href="#weddingSection" class="toggle-tab active" data-target="weddingSection">
+        <i class="fa-solid fa-crown"></i>
+        <span class="tab-label"><span class="tab-label-prefix">The </span>Wedding</span>
+      </a>
+      <a href="#eventsSection" class="toggle-tab" data-target="eventsSection">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span class="tab-label">Events</span>
+      </a>
+      <a href="#countdownSection" class="toggle-tab" data-target="countdownSection">
+        <i class="fa-solid fa-hourglass-half"></i>
+        <span class="tab-label">Countdown</span>
+      </a>
+      <a href="#locationSection" class="toggle-tab" data-target="locationSection">
+        <i class="fa-solid fa-location-dot"></i>
+        <!-- <span class="tab-label">Venue</span> -->
+      </a>
+    </nav>
+  </div>
+
+  <!-- Main Wedding Container -->
+  <main class="main-wrapper">
+    <div class="wedding-card">
+      
+      <!-- ==============================================
+           MENU 1: THE WEDDING (Invitation Hero & Couple)
+           ============================================== -->
+      <section class="section-block wedding-hero-section" id="weddingSection">
+        
+        <!-- Top Auspicious Rajput Invocations: Ganeshji & Maa Bhavani -->
+        <div class="ganesha-section">
+          <div class="ganesha-emblem">
+            <svg class="ganesha-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Lord Ganesha Emblem">
+              <defs>
+                <linearGradient id="ganeshGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fff8d6"/>
+                  <stop offset="30%" stop-color="#f5cc59"/>
+                  <stop offset="70%" stop-color="#cf9e2e"/>
+                  <stop offset="100%" stop-color="#8a6108"/>
+                </linearGradient>
+                <linearGradient id="ganeshRubyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ff4d4d"/>
+                  <stop offset="100%" stop-color="#b71c1c"/>
+                </linearGradient>
+                <radialGradient id="ganeshHaloGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fff9e6" stop-opacity="0.95"/>
+                  <stop offset="70%" stop-color="#ffe8a3" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#ffe8a3" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Divine Halo Glow & Radiant Prabhavali Rings -->
+              <circle cx="50" cy="50" r="45" fill="url(#ganeshHaloGlow)"/>
+              <circle cx="50" cy="50" r="44.5" stroke="url(#ganeshGoldGrad)" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.6"/>
+              <circle cx="50" cy="50" r="41.5" stroke="url(#ganeshGoldGrad)" stroke-width="1.2" opacity="0.85"/>
+              
+              <!-- Auspicious Halo Pearl Beads -->
+              <circle cx="50" cy="6" r="1.5" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="19" cy="19" r="1.2" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="81" cy="19" r="1.2" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="6" cy="50" r="1.2" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="94" cy="50" r="1.2" fill="url(#ganeshGoldGrad)"/>
+
+              <!-- Royal Rajput Mukut (Crown) -->
+              <!-- Kalash Finial with Ruby Gem -->
+              <path d="M50 11 L52 16 L48 16 Z" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="50" cy="10" r="1.6" fill="url(#ganeshRubyGrad)"/>
+              <!-- Crown Top Tier Dome -->
+              <path d="M42 24 C43 17 47 15 50 15 C53 15 57 17 58 24 Z" fill="url(#ganeshGoldGrad)"/>
+              <path d="M45 20 C47 18 53 18 55 20" stroke="#ffffff" stroke-width="0.8" opacity="0.7"/>
+              <circle cx="50" cy="20.5" r="1.8" fill="url(#ganeshRubyGrad)"/>
+              <!-- Crown Middle Tier -->
+              <path d="M37 28 C39 23 61 23 63 28 Z" fill="url(#ganeshGoldGrad)"/>
+              <!-- Crown Base Headband with Sacred Pearls -->
+              <path d="M33 32 C38 29 62 29 67 32 L66 34 C61 31 39 31 34 34 Z" fill="#8a6108"/>
+              <circle cx="38" cy="31" r="1" fill="#ffffff"/>
+              <circle cx="44" cy="30.5" r="1" fill="#ffffff"/>
+              <circle cx="50" cy="30" r="1.3" fill="url(#ganeshRubyGrad)"/>
+              <circle cx="56" cy="30.5" r="1" fill="#ffffff"/>
+              <circle cx="62" cy="31" r="1" fill="#ffffff"/>
+
+              <!-- Winnowing Sacred Ears (Surpakarna) with Royal Kundalas -->
+              <!-- Left Ear -->
+              <path d="M33 34 C24 33 16 38 15 46 C14 55 21 62 30 63 C33 63 35 62 36 60" 
+                    stroke="url(#ganeshGoldGrad)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <path d="M22 43 C20 48 23 54 28 56" stroke="url(#ganeshGoldGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+              <circle cx="16" cy="53" r="2.2" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="16" cy="53" r="1" fill="url(#ganeshRubyGrad)"/>
+
+              <!-- Right Ear -->
+              <path d="M67 34 C76 33 84 38 85 46 C86 55 79 62 70 63 C67 63 65 62 64 60" 
+                    stroke="url(#ganeshGoldGrad)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <path d="M78 43 C80 48 77 54 72 56" stroke="url(#ganeshGoldGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+              <circle cx="84" cy="53" r="2.2" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="84" cy="53" r="1" fill="url(#ganeshRubyGrad)"/>
+
+              <!-- Benevolent Lotus Eyes (Padmaksha) -->
+              <path d="M38 41 C41 39 45 40 46 43" stroke="url(#ganeshGoldGrad)" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="42.5" cy="42.5" r="1.2" fill="#5c4008"/>
+              <path d="M62 41 C59 39 55 40 54 43" stroke="url(#ganeshGoldGrad)" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="57.5" cy="42.5" r="1.2" fill="#5c4008"/>
+
+              <!-- Sacred Tilak & Chandan Teeka (Kumkum & Sandalwood) -->
+              <path d="M45 34 C45 41 55 41 55 34" stroke="url(#ganeshGoldGrad)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M50 32 L50 43" stroke="url(#ganeshRubyGrad)" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="50" cy="45.5" r="1.8" fill="url(#ganeshRubyGrad)"/>
+
+              <!-- Sacred Tusks (Ekadanta) -->
+              <!-- Unbroken Right Tusk -->
+              <path d="M41 53 C38 54 36 57 35 60 C37 59 40 58 42 56 Z" fill="url(#ganeshGoldGrad)"/>
+              <!-- Broken Left Tusk -->
+              <path d="M59 53 C61 54 62 56 62 57 L58 56 Z" fill="url(#ganeshGoldGrad)"/>
+
+              <!-- Graceful Vamamukhi Trunk (Vakratunda) Sweeping Elegantly -->
+              <path d="M44 46 C44 55 46 63 47 70 C48 78 51 84 57 85 C64 86 70 82 72 74 C73 68 68 64 62 65 C58 66 56 70 58 73 C60 76 64 76 65 73" 
+                    stroke="url(#ganeshGoldGrad)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              
+              <!-- Subtle Inner Light Highlight on Trunk -->
+              <path d="M45.5 50 C45.5 57 47.5 64 48.5 70 C49.5 76 52 82 57 83 C62 84 67 80 68.5 74" 
+                    stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.65" fill="none"/>
+
+              <!-- Sacred Trunk Rings (Rekha) -->
+              <path d="M45 57 Q49 59 53 58" stroke="url(#ganeshGoldGrad)" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M46 63 Q50 65 54 64" stroke="url(#ganeshGoldGrad)" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M47 69 Q51 71 55 70" stroke="url(#ganeshGoldGrad)" stroke-width="1.4" stroke-linecap="round"/>
+
+              <!-- Sacred Golden Modak Cradled at Trunk Tip -->
+              <path d="M63 60 C61 58 63 54 66 53 C69 54 71 58 69 60 C68 61 64 61 63 60 Z" fill="url(#ganeshGoldGrad)"/>
+              <circle cx="66" cy="54" r="1" fill="url(#ganeshRubyGrad)"/>
+              <path d="M64.5 57 L67.5 57 M65 55 L67 59" stroke="#8a6108" stroke-width="0.6"/>
+
+              <!-- Auspicious Lotus Base / Padmasana -->
+              <path d="M36 89 C42 86 58 86 64 89 C60 92 40 92 36 89 Z" fill="url(#ganeshGoldGrad)" opacity="0.9"/>
+              <circle cx="50" cy="89" r="1.5" fill="url(#ganeshRubyGrad)"/>
+            </svg>
+          </div>
+          <p class="shloka-title" id="shlokaTitle">॥ श्री गणेशाय नमः ॥</p>
+          
+          <!-- Royal Rajputana Motto & Crest -->
+          <div class="rajput-crest-header">
+            <span class="swords-icon-left">⚔️</span>
+            <span class="rajput-motto-text" id="rajputMottoText">॥ जय माँ भवानी ॥</span>
+            <span class="swords-icon-right">⚔️</span>
+          </div>
+          
+          <p class="shloka-verse" id="shlokaVerse">
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। <br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+          </p>
+        </div>
+
+        <!-- Royal Wedding Logo Emblem (Round Shape) -->
+        <div class="monogram-wrapper">
+          <div class="laurel-leaf left"></div>
+          <div class="royal-logo-frame" id="royalLogoFrame">
+            <img src="images/logo.jpg" alt="Krishna &amp; Ankita Wedding Logo" class="royal-logo-img">
+          </div>
+          <div class="laurel-leaf right"></div>
+        </div>
+
+        <!-- Invitation Header & Couple Names with Nicknames -->
+        <p class="pre-title" id="preTitle">With Great Joy, We Invite You to Celebrate the Wedding of</p>
+        <h1 class="couple-names" id="coupleNamesDisplay">Krishnapal &amp; Ankita</h1>
+        
+        <!-- Nicknames Highlight Banner: Lalu Weds Banti -->
+        <div class="nicknames-banner">
+          <span class="nickname-pill" id="nicknameBadge">
+            <i class="fa-solid fa-heart heart-pink"></i> 
+            <span id="nicknameText">Banti Weds Lalu</span> 
+            <i class="fa-solid fa-heart heart-pink"></i>
+          </span>
+        </div>
+
+        <!-- ==============================================
+             PARENTS & LINEAGE CARDS (Groom & Bride Details)
+             ============================================== -->
+        <div class="family-details-container">
+          <!-- Groom's Side Card -->
+          <div class="family-card groom-family-card">
+            <div class="family-badge groom-badge" id="badgeGroomSide">The Groom • वर पक्ष</div>
+            <div class="family-icon"><i class="fa-solid fa-crown"></i></div>
+            <h3 class="person-name" id="groomNameText">Krishnapal singh Chouhan <span class="nick-tag">(Banti)</span></h3>
+            <div class="family-info-line">
+              <span class="info-label" id="labelGroomParents">Son of:</span>
+              <strong class="info-val" id="groomParentsText">Shri Komal Singh Chouhan</strong>
+            </div>
+            <div class="family-info-line">
+              <strong class="info-val" id="groomLocationText"><i class="fa-solid fa-location-dot"></i>Badiya Gyasur Khandwa M.P</strong>
+            </div>
+          </div>
+
+          <!-- Auspicious Knot / Union Emblem -->
+          <div class="family-union-divider">
+            <div class="union-circle">
+              <i class="fa-solid fa-heart heart-pink"></i>
+            </div>
+            <span class="union-text" id="unionWedsText">WEDS</span>
+          </div>
+
+          <!-- Bride's Side Card -->
+          <div class="family-card bride-family-card">
+            <div class="family-badge bride-badge" id="badgeBrideSide">The Bride • वधू पक्ष</div>
+            <div class="family-icon"><i class="fa-solid fa-gem"></i></div>
+            <h3 class="person-name" id="brideNameText">Ankita Chouhan<span class="nick-tag">(Lalu)</span></h3>
+            <div class="family-info-line">
+              <span class="info-label" id="labelBrideParents">Daughter of:</span>
+              <strong class="info-val" id="brideParentsText">Shri ShivPrashad Singh Chouhan</strong>
+            </div>
+            <div class="family-info-line">
+              <strong class="info-val" id="brideLocationText"><i class="fa-solid fa-location-dot"></i>Borani,Khandwa M.P.</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Royal Rajput Jharokha Couple Photo Frame -->
+        <div class="couple-photo-wrapper">
+          <div class="jharokha-frame">
+            <!-- Ornate Jharokha Arch Peak -->
+            <div class="jharokha-arch-peak">
+              <span class="arch-motif">⚜️</span>
+              <span class="arch-crown"><i class="fa-solid fa-crown"></i></span>
+              <span class="arch-motif">⚜️</span>
+            </div>
+
+            <div class="couple-img-container">
+              <img src="images/couple.jpg" alt="Krishna & Ankita - Couple Portrait" id="couplePhotoImg" class="couple-photo">
+              <div class="couple-photo-overlay"></div>
+            </div>
+
+            <!-- Ornate Jharokha Base -->
+            <div class="jharokha-base">
+              <span class="base-flourish">❖</span>
+              <span class="base-tag" id="coupleBadgeText">#BantiKiLali</span>
+              <span class="base-flourish">❖</span>
+            </div>
+          </div>
+
+          <p class="couple-frame-caption" id="coupleFrameCaption">
+            "Two lives entwined by love, beginning their forever with sacred vows."
+          </p>
+        </div>
+
+        <div class="gold-divider">
+          <span class="sparkle-left">⚔️</span>
+          <span class="diamond">❖</span>
+          <span class="sparkle-right">⚔️</span>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           MENU 2: EVENTS (Celebration Timeline with Flaticon/Vecteezy Hindu Wedding SVGs)
+           ============================================== -->
+      <section class="section-block events-section" id="eventsSection">
+        <h2 class="section-title" id="eventsTitle">Events &amp; Ceremonies</h2>
+        <p class="section-subtitle" id="eventsSubtitle">
+         Amidst colors of haldi, rhythm of folk beats, and eternal wedding vows.
+         We invite you to be part of our three-day celebration of love.
+        </p>
+
+        <!-- Events Timeline Grid with Authentic Hindu Wedding Vector Icons -->
+        <div class="events-grid">
+
+          <!-- Event 1: Haldi -->
+          <div class="event-card event-haldi" data-event-day="25">
+            <div class="event-card-glow"></div>
+            <div class="event-header">
+              <span class="event-day-pill" id="badgeDay1b">25 Feb 2027</span>
+              <span class="event-time-pill" id="timeHaldi"><i class="fa-solid fa-cloud-sun"></i> Evening</span>
+            </div>
+
+            <!-- Authentic Hindu Wedding Shree Ganesh Pujan Image Icon -->
+            <div class="event-icon-circle">
+              <img src="images/ganeshji.png" alt="Shree Ganesh Pujan" class="event-icon-img">
+            </div>
+
+            <h3 class="event-name" id="nameHaldi">Shree Ganesh Pujan & Haldi</h3>
+            <h4 class="event-name-hi" id="nameHaldiHi">श्री गणेश पूजन एवं हल्दी</h4>
+            <div class="event-meta">
+              <span><i class="fa-solid fa-clock"></i> <strong id="scheduleHaldi">Evening</strong></span>
+              <span><i class="fa-solid fa-wand-magic-sparkles"></i> <strong>Haldi Glow</strong></span>
+            </div>
+          </div>
+
+          <!-- Event 2: Sangeet -->
+          <div class="event-card event-sangeet" data-event-day="25">
+            <div class="event-card-glow"></div>
+            <div class="event-header">
+              <span class="event-day-pill" id="badgeDay1c">25 Feb 2027</span>
+              <span class="event-time-pill" id="timeSangeet"><i class="fa-solid fa-moon"></i> Night</span>
+            </div>
+
+            <!-- Authentic Hindu Wedding Royal Dholak & Shehnai SVG -->
+            <div class="event-icon-circle">
+              <svg class="hindu-wedding-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sangeet Ceremony Icon">
+                <defs>
+                  <linearGradient id="dholakWoodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#795548"/>
+                    <stop offset="35%" stop-color="#4e342e"/>
+                    <stop offset="70%" stop-color="#5d4037"/>
+                    <stop offset="100%" stop-color="#3e2723"/>
+                  </linearGradient>
+                  <linearGradient id="shehnaiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fff59d"/>
+                    <stop offset="40%" stop-color="#ffb300"/>
+                    <stop offset="100%" stop-color="#e65100"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Musical Melody Notes Floating -->
+                <path d="M12 16 V9 H17 V11 H13 V16 Z M13 16 A 2 2 0 1 1 9 16 A 2 2 0 1 1 13 16 Z" fill="#ffb300"/>
+                <path d="M52 14 V6 H58 V8 H53 V14 Z M53 14 A 2.2 2.2 0 1 1 48.6 14 A 2.2 2.2 0 1 1 53 14 Z" fill="#ab47bc"/>
+                <path d="M48 6 L58 4 V6 L48 8 Z" fill="#ab47bc"/>
+                <circle cx="32" cy="7" r="1.2" fill="#ffd54f"/>
+
+                <!-- Golden Royal Shehnai in Background -->
+                <path d="M14 54 L46 16" stroke="url(#shehnaiGrad)" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M9 59 C7 61 11 63 15 61 L19 51 L10 46 Z" fill="url(#shehnaiGrad)" stroke="#c59b27" stroke-width="0.8"/>
+                <circle cx="28" cy="37" r="0.9" fill="#4e342e"/>
+                <circle cx="33" cy="31" r="0.9" fill="#4e342e"/>
+                <circle cx="38" cy="25" r="0.9" fill="#4e342e"/>
+                <circle cx="43" cy="19" r="0.9" fill="#4e342e"/>
+                <path d="M45 17 L49 13" stroke="#ffd54f" stroke-width="2"/>
+                <circle cx="46" cy="16" r="1.2" fill="#d32f2f"/>
+
+                <!-- The Royal Dholak (Main Instrument) -->
+                <path d="M17 23 C23 18 41 18 47 23 L49 43 C43 48 21 48 15 43 Z" fill="url(#dholakWoodGrad)" stroke="#c59b27" stroke-width="1.2"/>
+                
+                <!-- Center Gold Inlay Band -->
+                <path d="M30 19 H34 V47 H30 Z" fill="#ffd54f" opacity="0.9"/>
+                <path d="M31 19 H33 V47 H31 Z" fill="#ffb300"/>
+
+                <!-- Woven Golden Dori / Tension Ropes -->
+                <path d="M17 24 L24 46 L32 19 L40 46 L47 24" stroke="#ffd54f" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 42 L24 20 L32 46 L40 20 L49 42" stroke="#ffecb3" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                
+                <!-- Tuning Rings (Chhalla) -->
+                <circle cx="28" cy="33" r="1.5" fill="#fff59d" stroke="#b78103" stroke-width="0.7"/>
+                <circle cx="36" cy="33" r="1.5" fill="#fff59d" stroke="#b78103" stroke-width="0.7"/>
+
+                <!-- Left Drumhead (Bayan - Leather & Rim) -->
+                <path d="M17 23 C14 23 13 43 15 43 C17 43 19 33 17 23 Z" fill="#efebe9" stroke="#bcaaa4" stroke-width="1"/>
+                <ellipse cx="15.2" cy="33" rx="1.6" ry="4.5" fill="#2e1c14"/>
+
+                <!-- Right Drumhead (Dayan - Leather & Rim) -->
+                <path d="M47 23 C49 23 51 33 49 43 C47 43 45 33 47 23 Z" fill="#efebe9" stroke="#bcaaa4" stroke-width="1"/>
+                <ellipse cx="48.8" cy="33" rx="1.6" ry="4.5" fill="#2e1c14"/>
+
+                <!-- Ghungroo & Latkan Tassels Hanging from Dholak -->
+                <path d="M26 47 Q27 54 29 55" stroke="#d32f2f" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+                <circle cx="29" cy="55" r="1.6" fill="#ffd54f"/>
+                <path d="M38 47 Q37 54 35 55" stroke="#d32f2f" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+                <circle cx="35" cy="55" r="1.6" fill="#ffd54f"/>
+              </svg>
+            </div>
+
+            <h3 class="event-name" id="nameSangeet">Sangeet</h3>
+            <h4 class="event-name-hi" id="nameSangeetHi">संगीत</h4>
+            <div class="event-meta">
+              <span><i class="fa-solid fa-clock"></i> <strong id="scheduleSangeet">Night</strong></span>
+              <span><i class="fa-solid fa-music"></i> <strong>Royal Beats &amp; Dance</strong></span>
+            </div>
+          </div>
+
+          <!-- Event 3: Ganga Pujan -->
+          <div class="event-card event-ganga" data-event-day="26">
+            <div class="event-card-glow"></div>
+            <div class="event-header">
+              <span class="event-day-pill" id="badgeDay2a">26 Feb 2027</span>
+              <span class="event-time-pill" id="timeGanga"><i class="fa-solid fa-om"></i> Morning</span>
+            </div>
+
+            <!-- Authentic Hindu Wedding Mangal Kalash Image Icon -->
+            <div class="event-icon-circle">
+              <img src="images/kalash.png" alt="Ganga Pujan Mangal Kalash" class="event-icon-img">
+            </div>
+
+            <h3 class="event-name" id="nameGanga">Ganga Pujan</h3>
+            <h4 class="event-name-hi" id="nameGangaHi">गंगा पूजन</h4>
+            <div class="event-meta">
+              <span><i class="fa-solid fa-clock"></i> <strong id="scheduleGanga">Morning 8 AM</strong></span>
+              <span><i class="fa-solid fa-hands-praying"></i> <strong>Divine Grace</strong></span>
+            </div>
+          </div>
+
+          <!-- Event 4: Mandap -->
+          <div class="event-card event-mandap" data-event-day="26">
+            <div class="event-card-glow"></div>
+            <div class="event-header">
+              <span class="event-day-pill" id="badgeDay2b">26 Feb 2027</span>
+              <span class="event-time-pill" id="timeMandap"><i class="fa-solid fa-sun"></i> Afternoon</span>
+            </div>
+
+            <!-- Authentic Hindu Wedding Mandap Toran Image Icon -->
+            <div class="event-icon-circle">
+              <img src="images/manadap.png" alt="Mandap Toran" class="event-icon-img">
+            </div>
+
+            <h3 class="event-name" id="nameMandap">Mandap</h3>
+            <h4 class="event-name-hi" id="nameMandapHi">मंडप प्रतिष्ठा</h4>
+            <div class="event-meta">
+              <span><i class="fa-solid fa-clock"></i> <strong id="scheduleMandap">Afternoon</strong></span>
+              <span><i class="fa-solid fa-fire-flame-curved"></i> <strong>Pavitra Havan &amp; Sthapana</strong></span>
+            </div>
+          </div>
+
+          <!-- Event 5: Baarat & Wedding Day (Grand Rajput Vivah) -->
+          <div class="event-card event-baarat grand-event" data-event-day="27">
+            <!-- <div class="grand-badge" id="grandBadgeText"><i class="fa-solid fa-crown"></i> The Royal Rajput Vivah</div> -->
+            <div class="event-card-glow"></div>
+            <div class="event-header">
+              <span class="event-day-pill highlight-gold" id="badgeDay3">27 Feb 2027</span>
+              <span class="event-time-pill highlight-pill" id="timeBaarat"><i class="fa-solid fa-star"></i> Auspicious Day</span>
+            </div>
+
+            <!-- Authentic Hindu Wedding Gathbandhan & Sacred Havan Image Icon -->
+            <div class="event-icon-circle crown-circle">
+              <img src="images/theweeding.png" alt="Baarat & Shubh Vivah - Wedding Day" class="event-icon-img grand-img">
+            </div>
+
+            <h3 class="event-name" id="nameBaarat">Baarat &amp; Shubh Vivah</h3>
+            <h4 class="event-name-hi" id="nameBaaratHi">बारात प्रस्थान एवं शुभ विवाह</h4>
+            <div class="event-meta grand-meta">
+              <span>
+                <i class="fa-solid fa-route"></i> <span id="labelBaaratFrom">Baarat from:</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Badiya+Gyasur" target="_blank" rel="noopener noreferrer" class="city-map-link" title="Open Badiya Gyasur on Google Maps">
+                  <strong id="metaBaaratOrigin">Badiya Gyasur</strong>
+                  <i class="fa-solid fa-arrow-up-right-from-square meta-link-icon"></i>
+                </a>
+              </span>
+              <span>
+                <i class="fa-solid fa-location-dot"></i> <span id="labelWeddingAt">Venue:</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Borani" target="_blank" rel="noopener noreferrer" class="city-map-link" title="Open Borani on Google Maps">
+                  <strong id="metaWeddingVenue">Borani</strong>
+                  <i class="fa-solid fa-arrow-up-right-from-square meta-link-icon"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="gold-divider thin">
+        <span class="diamond">◆</span>
+      </div>
+
+      <!-- ==============================================
+           MENU 3: COUNTDOWN & CALENDAR
+           ============================================== -->
+      <section class="section-block countdown-section" id="countdownSection">
+        <div class="section-header-badge">
+          <i class="fa-solid fa-hourglass-half"></i>
+          <span id="countdownBadgeText">Save The Date</span>
+        </div>
+        <h2 class="countdown-heading" id="countdownHeading">Counting down the days to our forever</h2>
+        <p class="countdown-subtext" id="countdownSubtext">Friday, 27 February 2027</p>
+        
+        <div class="countdown-grid">
+          <!-- Days Box -->
+          <div class="timer-card highlight-card">
+            <div class="timer-value" id="days">000</div>
+            <div class="timer-label" id="labelDays">DAYS</div>
+            <span class="card-glow"></span>
+          </div>
+
+          <!-- Hours Box -->
+          <div class="timer-card">
+            <div class="timer-value" id="hours">00</div>
+            <div class="timer-label" id="labelHours">HOURS</div>
+          </div>
+
+          <!-- Minutes Box -->
+          <div class="timer-card">
+            <div class="timer-value" id="minutes">00</div>
+            <div class="timer-label" id="labelMinutes">MINUTES</div>
+          </div>
+
+          <!-- Seconds Box -->
+          <div class="timer-card">
+            <div class="timer-value" id="seconds">00</div>
+            <div class="timer-label" id="labelSeconds">SECONDS</div>
+          </div>
+        </div>
+
+        <!-- February 2027 Calendar within Countdown Menu -->
+        <div class="calendar-wrapper">
+          <div class="calendar-card">
+            <div class="calendar-header">
+              <div class="cal-month" id="calMonthYear">Save The Dates</div>
+              <div class="cal-tagline" id="calTagline">25th – 27th February 2027</div>
+            </div>
+
+            <!-- Days of Week Header -->
+            <div class="calendar-weekdays" id="calendarWeekdaysGrid">
+              <span>SUN</span>
+              <span>MON</span>
+              <span>TUE</span>
+              <span>WED</span>
+              <span>THU</span>
+              <span>FRI</span>
+              <span>SAT</span>
+            </div>
+
+            <!-- Days Grid populated by JS -->
+            <div class="calendar-days" id="calendarDaysGrid">
+              <!-- Populated via script.js -->
+            </div>
+
+            <!-- Calendar Key / Legend -->
+            <div class="calendar-legend">
+              <div class="legend-item">
+                <span class="legend-dot dot-yellow"></span>
+                <span id="legend25">25 Feb: Haldi &amp; Sangeet</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot dot-orange"></span>
+                <span id="legend26">26 Feb: Ganga Pujan, Mandap &amp; PratiBhoj</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot dot-wedding"></span>
+                <span id="legend27">27 Feb: Baarat &amp; Wedding Day</span>
+              </div>
+            </div>
+
+            <!-- Calendar Footer Note -->
+            <div class="calendar-footer">
+              <i class="fa-solid fa-heart beating-heart"></i>
+              <!-- <span id="calendarFooterText">Saturday, 27 February 2027 — The Eternal Celebration</span> -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="gold-divider thin">
+        <span class="diamond">◆</span>
+      </div>
+
+      <!-- ==============================================
+           MENU 4: LOCATION & VENUE (Google Maps & Directions)
+           ============================================== -->
+      <section class="section-block venue-section" id="locationSection">
+        <div class="section-header-badge">
+          <i class="fa-solid fa-location-dot"></i>
+          <span id="venueBadgeText">Location &amp; Directions</span>
+        </div>
+        <p class="section-subtitle" id="venueSectionSubtitle">
+          Find your way easily to our wedding destination
+        </p>
+
+        <div class="venue-cards-container">
+          <!-- Main Wedding Venue Card -->
+          <div class="venue-info-card primary-venue">
+            <div class="venue-badge" id="badgeMainVenue">Main Wedding Venue</div>
+            <div class="venue-icon">
+              <i class="fa-solid fa-place-of-worship"></i>
+            </div>
+            <!-- <h3 class="venue-title" id="venueNameDisplay">Badiya Gyasur</h3> -->
+            <p class="venue-address" id="venueAddressText">
+              <i class="fa-solid fa-map-pin"></i> Badiya Gyasur , Madhya Pradesh, India
+            </p>
+            <div class="venue-btn-group">
+              <a href="https://www.google.com/maps/search/?api=1&query=Badiya+Gyasur" target="_blank" rel="noopener noreferrer" class="btn-venue-gold" id="btnGoogleMaps">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span id="btnGoogleMapsText">Open in Google Maps</span>
+              </a>
+              <!-- <button type="button" class="btn-venue-outline" id="copyAddressBtn">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copyAddressBtnText">Copy Address</span>
+              </button> -->
+            </div>
+          </div>
+
+          <!-- Baarat Departure Card -->
+          <div class="venue-info-card secondary-venue">
+            <div class="venue-badge secondary" id="badgeBaaratVenue">Baarat &amp; The Wedding Day</div>
+            <div class="venue-icon secondary">
+              <img src="images/grrom.png" alt="Baarat Groom on Royal Horse" class="venue-icon-img">
+            </div>
+            <!-- <h3 class="venue-title" id="baaratOriginDisplay">Borani</h3> -->
+            <!-- <p class="venue-tagline" id="baaratTagline">The royal wedding procession will depart from Badiya Gyasur on 27 Feb</p> -->
+            <p class="venue-address" id="baaratAddressText">
+              <i class="fa-solid fa-map-pin"></i> Borani, Madhya Pradesh, India
+            </p>
+            <div class="venue-btn-group">
+              <a href="https://www.google.com/maps/search/?api=1&query=Borani" target="_blank" rel="noopener noreferrer" class="btn-venue-outline" id="btnBoraniMaps">
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                <span id="btnBoraniMapsText">Open in Google Maps</span>
+              </a>
+              <!-- <button type="button" class="btn-venue-outline" id="copyAddressBtn">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copyAddressBtnText">Copy Address</span>
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="gold-divider thin">
+        <span class="diamond">◆</span>
+      </div>
+
+      <!-- ==============================================
+           ROYAL WELCOME & BLESSINGS (Swagat & Family Invitation)
+           ============================================== -->
+      <section class="section-block welcome-section" id="blessingsSection">
+        <div class="welcome-card">
+          <!-- Ornate Gold Corner Filigrees -->
+          <span class="corner-ornament top-left">❖</span>
+          <span class="corner-ornament top-right">❖</span>
+          <span class="corner-ornament bottom-left">❖</span>
+          <span class="corner-ornament bottom-right">❖</span>
+
+          <!-- Auspicious Insignia & Sanskrit Welcome Mantra -->
+          <div class="welcome-crest">
+            <div class="crest-emblem">
+              <span class="swords-icon">⚔️</span>
+            </div>
+            <div class="welcome-shloka">॥ अतिथि देवो भवः ॥</div>
+            <div class="welcome-subshloka">॥ स्वागतम् • सुस्वागतम् ॥</div>
+          </div>
+
+          <!-- Section Heading -->
+          <div class="welcome-header">
+            <!-- <span class="welcome-badge">Warmest Invitation</span> -->
+            <h2 class="welcome-title">With Joyful Hearts,<br> We Welcome You</h2>
+            <div class="welcome-ornament-line">
+              <span class="line-sparkle">✦</span>
+              <span class="line-center">❧ ❦ ❧</span>
+              <span class="line-sparkle">✦</span>
+            </div>
+          </div>
+
+       
+       
+
+            <div class="welcome-closing-shloka">
+               आपकी गरिमामयी उपस्थिति एवं स्नेहपूर्ण आशीर्वाद सादर प्रार्थनीय है
+            </div>
+
+            <!-- Hospitality Quick Action Buttons -->
+            <!-- <div class="welcome-actions">
+              <a href="https://api.whatsapp.com/send?text=%E0%A5%A5%20%E0%A4%9C%E0%A4%AF%20%E0%A4%AE%E0%A4%BE%E0%A4%81%20%E0%A4%AD%E0%A4%B5%E0%A4%BE%E0%A4%A8%E0%A5%80%20%E0%A5%A5%20%F0%9F%99%8F%0AHeartiest%20congratulations%20and%20warmest%20wishes%20to%20Banti%20%26%20Lalu%20on%20their%20royal%20wedding%20celebration!%20%E2%9C%A8%F0%9F%8E%89" target="_blank" rel="noopener noreferrer" class="btn-welcome-wishes">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Send Warm Wishes</span>
+              </a>
+              <button type="button" class="btn-welcome-share" id="welcomeShareBtn">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Share Invitation</span>
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </section>    
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Fixed Navigation Bar (Synced with 4 Main Menus) -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Navigation">
+    <a href="#weddingSection" class="mob-bar-item" data-target="weddingSection">
+      <i class="fa-solid fa-crown"></i>
+      <span>Wedding</span>
+    </a>
+    <a href="#eventsSection" class="mob-bar-item" data-target="eventsSection">
+      <i class="fa-solid fa-calendar-days"></i>
+      <span>Events</span>
+    </a>
+    <a href="#countdownSection" class="mob-bar-item" data-target="countdownSection">
+      <i class="fa-solid fa-hourglass-half"></i>
+      <span>Timer</span>
+    </a>
+    <a href="#locationSection" class="mob-bar-item" data-target="locationSection">
+      <i class="fa-solid fa-location-dot"></i>
+      <!-- <span>Venue</span> -->
+    </a>
+    <button type="button" class="mob-bar-item mob-share-btn" id="mobShareBtn">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>Share</span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-box" id="toastBox"></div>
+
+  <!-- Background Wedding Music Audio Element (Plays ReelAudio-51134.mp3 with synth fallback) -->
+  <audio id="weddingBgMusic" src="audio/ReelAudio-51134.mp3" preload="auto" loop playsinline>
+    <source src="audio/ReelAudio-51134.mp3" type="audio/mpeg">
+    <source src="audio/wedding_music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
