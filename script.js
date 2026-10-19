@@ -37,15 +37,12 @@ const calendarWeekdaysGrid = document.getElementById("calendarWeekdaysGrid");
 const speakerBtn = document.getElementById("speakerBtn");
 const speakerIcon = document.getElementById("speakerIcon");
 const weddingBgMusicEl = document.getElementById("weddingBgMusic");
-let audioCtx = null;
 let isMusicPlaying = true; // Default music ON
 let isAudioElementPlaying = false;
-let musicInterval = null;
 let userHasInteracted = false;
 
 // Action Buttons
 const mobShareBtn = document.getElementById("mobShareBtn");
-const copyAddressBtn = document.getElementById("copyAddressBtn");
 const toastBox = document.getElementById("toastBox");
 
 // 3. Initialization on Page Load
@@ -249,135 +246,24 @@ function initPetalsAnimation() {
   render();
 }
 
-// 8. Royal Shehnai & Sitar Melody (Web Audio API Synthesizer)
-function getAudioContext() {
-  if (!audioCtx) {
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (AudioContextClass) {
-      audioCtx = new AudioContextClass();
-    }
-  }
-  if (audioCtx && audioCtx.state === "suspended") {
-    audioCtx.resume();
-  }
-  return audioCtx;
-}
-
-// Raag Yaman / Bhupali Auspicious Notes
-const weddingScale = [
-  293.66, // D4
-  329.63, // E4
-  369.99, // F#4
-  440.00, // A4
-  493.88, // B4
-  587.33, // D5
-  659.25, // E5
-  739.99  // F#5
-];
-
-// Traditional Indian Wedding Swara Progression
-const melodicProgression = [
-  { note: 0, dur: 0.75 },
-  { note: 1, dur: 0.55 },
-  { note: 2, dur: 0.95 },
-  { note: 3, dur: 0.75 },
-  { note: 4, dur: 1.15 },
-  { note: 3, dur: 0.55 },
-  { note: 5, dur: 1.35 },
-  { note: 4, dur: 0.75 },
-  { note: 2, dur: 0.95 },
-  { note: 1, dur: 0.75 },
-  { note: 0, dur: 1.45 }
-];
-
-let melodyIndex = 0;
-
-function playIndianWeddingNote(freq, duration) {
-  const ctx = getAudioContext();
-  if (!ctx) return;
-
-  const now = ctx.currentTime;
-
-  // Shehnai/Sitar multi-harmonic tone
-  const osc1 = ctx.createOscillator();
-  const osc2 = ctx.createOscillator();
-  const subOsc = ctx.createOscillator();
-  const gainNode = ctx.createGain();
-
-  osc1.type = "sine";
-  osc2.type = "triangle";
-  subOsc.type = "sine";
-
-  osc1.frequency.setValueAtTime(freq, now);
-  // Gentle Indian gamak (meend / vibrato)
-  osc1.frequency.exponentialRampToValueAtTime(freq * 1.015, now + duration * 0.4);
-  osc1.frequency.exponentialRampToValueAtTime(freq, now + duration * 0.9);
-
-  osc2.frequency.setValueAtTime(freq * 2, now);
-  subOsc.frequency.setValueAtTime(freq * 0.5, now);
-
-  gainNode.gain.setValueAtTime(0.0001, now);
-  gainNode.gain.linearRampToValueAtTime(0.045, now + 0.12);
-  gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-
-  osc1.connect(gainNode);
-  osc2.connect(gainNode);
-  subOsc.connect(gainNode);
-  gainNode.connect(ctx.destination);
-
-  osc1.start(now);
-  osc2.start(now);
-  subOsc.start(now);
-
-  osc1.stop(now + duration);
-  osc2.stop(now + duration);
-  subOsc.stop(now + duration);
-}
-
+// 8. Royal Background Audio Player (Plays Reel Audio by Default)
 function startRoyalMusic() {
+  if (!weddingBgMusicEl) return;
   isMusicPlaying = true;
   updateSpeakerButtonUI(true);
 
-  // Stop any running synthesizer melody immediately
-  if (musicInterval) {
-    clearInterval(musicInterval);
-    musicInterval = null;
+  weddingBgMusicEl.volume = 0.85;
+  const playPromise = weddingBgMusicEl.play();
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        isAudioElementPlaying = true;
+      })
+      .catch((err) => {
+        // Autoplay policy prevented playback before interaction; waiting for user gesture
+        console.log("Audio waiting for first user interaction to play:", err.name);
+      });
   }
-
-  // 1. If an actual MP3 audio element is available, attempt playback
-  if (weddingBgMusicEl) {
-    weddingBgMusicEl.volume = 0.75;
-    const playPromise = weddingBgMusicEl.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          isAudioElementPlaying = true;
-        })
-        .catch((err) => {
-          console.warn("Audio element play error:", err);
-          // Fallback to soothing Indian wedding synthesizer melody only if MP3 fails
-          if (isMusicPlaying && !isAudioElementPlaying) {
-            startSynthesizerMelody();
-          }
-        });
-      return;
-    }
-  }
-
-  // 2. Synthesizer fallback
-  startSynthesizerMelody();
-}
-
-function startSynthesizerMelody() {
-  if (musicInterval) clearInterval(musicInterval);
-  musicInterval = setInterval(() => {
-    if (!isMusicPlaying || isAudioElementPlaying) return;
-    const step = melodicProgression[melodyIndex];
-    const freq = weddingScale[step.note];
-    playIndianWeddingNote(freq, step.dur);
-
-    melodyIndex = (melodyIndex + 1) % melodicProgression.length;
-  }, 1050);
 }
 
 function stopRoyalMusic() {
@@ -388,15 +274,11 @@ function stopRoyalMusic() {
     } catch (e) {}
   }
   isAudioElementPlaying = false;
-  if (musicInterval) {
-    clearInterval(musicInterval);
-    musicInterval = null;
-  }
   updateSpeakerButtonUI(false);
 }
 
 function toggleRoyalSpeaker() {
-  if (isMusicPlaying) {
+  if (isMusicPlaying && weddingBgMusicEl && !weddingBgMusicEl.paused) {
     stopRoyalMusic();
     showToast("Music muted");
   } else {
@@ -418,19 +300,24 @@ function updateSpeakerButtonUI(playing) {
   }
 }
 
-// 9. Auto-play on First User Interaction (Browsers block unconditional autoplay)
+// 9. Auto-play Music by Default (Attempts immediate play, with seamless user gesture fallback)
 function initAutoMusicOnFirstInteraction() {
-  const triggerAudio = () => {
-    if (userHasInteracted) return;
-    userHasInteracted = true;
-    startRoyalMusic();
+  // 1. Attempt immediate autoplay on load
+  startRoyalMusic();
 
-    ["click", "touchstart", "scroll", "keydown"].forEach((evt) => {
+  // 2. Fallback: on first touch, click, scroll or keypress, start playing immediately if blocked by browser
+  const triggerAudio = () => {
+    if (weddingBgMusicEl && weddingBgMusicEl.paused) {
+      startRoyalMusic();
+    }
+    userHasInteracted = true;
+
+    ["click", "touchstart", "scroll", "keydown", "pointerdown"].forEach((evt) => {
       document.removeEventListener(evt, triggerAudio);
     });
   };
 
-  ["click", "touchstart", "scroll", "keydown"].forEach((evt) => {
+  ["click", "touchstart", "scroll", "keydown", "pointerdown"].forEach((evt) => {
     document.addEventListener(evt, triggerAudio, { passive: true });
   });
 }
@@ -447,9 +334,9 @@ You are cordially invited to celebrate the royal Rajput wedding of Krishnapal (B
 👰 Bride: Ankita Chouhan (Lalu)
    Daughter of Shri ShivPrashad Singh Chouhan (Borani, M.P.)
 
-🗓️ 25 Feb 2027: Haldi (Evening), Sangeet (Night)
-🗓️ 26 Feb 2027: Ganga Pujan (Morning), Mandap (Afternoon)
-🗓️ 27 Feb 2027: Baarat from Borani & Shubh Vivah at Badiya Gyasur
+🗓️ 25 Feb 2027 (Thu): Haldi (4:00 PM), Sangeet (7:30 PM)
+🗓️ 26 Feb 2027 (Fri): Ganga Pujan (8:00 AM), Mandap (1:00 PM), Shahi Pratibhoj (5:00 PM)
+🗓️ 27 Feb 2027 (Sat): Baarat & Shubh Vivah (10:00 AM)
 
 📍 Wedding Venue: Badiya Gyasur, Madhya Pradesh
 
@@ -463,7 +350,7 @@ ${url}`;
 // 11. Add to Calendar (.ics Generator)
 function downloadCalendarFile() {
   const title = "Krishnapal & Ankita - Royal Rajput Wedding Celebrations";
-  const description = "25 Feb: Haldi & Sangeet\\n26 Feb: Ganga Pujan & Mandap\\n27 Feb: Baarat from Borani & Wedding at Badiya Gyasur";
+  const description = "25 Feb (Thu): Haldi & Sangeet\\n26 Feb (Fri): Ganga Pujan, Mandap & Shahi Pratibhoj (5 PM)\\n27 Feb (Sat): Baarat & Shubh Vivah";
   const location = "Badiya Gyasur, Madhya Pradesh, India";
 
   const icsContent = [
@@ -565,22 +452,8 @@ function setupEventListeners() {
     speakerBtn.addEventListener("click", toggleRoyalSpeaker);
   }
 
-  // WhatsApp Shares
+  // WhatsApp Share
   if (mobShareBtn) mobShareBtn.addEventListener("click", shareInvitationWhatsApp);
-  const welcomeShareBtn = document.getElementById("welcomeShareBtn");
-  if (welcomeShareBtn) welcomeShareBtn.addEventListener("click", shareInvitationWhatsApp);
-
-  // Copy Venue Address
-  if (copyAddressBtn) {
-    copyAddressBtn.addEventListener("click", () => {
-      const fullAddress = `${weddingConfig.venue}, Madhya Pradesh, India`;
-      navigator.clipboard.writeText(fullAddress).then(() => {
-        showToast("Venue address copied to clipboard!");
-      }).catch(() => {
-        showToast(fullAddress);
-      });
-    });
-  }
 
   // Royal Toggle Bar & Mobile Menu Click Navigation
   document.querySelectorAll(".toggle-tab, .mobile-bottom-bar .mob-bar-item[data-target]").forEach((item) => {

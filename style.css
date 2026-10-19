@@ -995,6 +995,7 @@ body {
 .event-sangeet .event-card-glow { background: var(--sangeet-glow); }
 .event-ganga .event-card-glow { background: var(--ganga-glow); }
 .event-mandap .event-card-glow { background: var(--mandap-glow); }
+.event-pratibhoj .event-card-glow { background: rgba(255, 179, 0, 0.45); }
 .event-baarat .event-card-glow { background: var(--baarat-glow); }
 
 .event-header {
@@ -1107,6 +1108,11 @@ body {
 .event-mandap .event-icon-circle {
   background: #fbe9e7;
   border: 1.5px solid rgba(216, 67, 21, 0.45);
+}
+
+.event-pratibhoj .event-icon-circle {
+  background: #fff8e1;
+  border: 1.5px solid rgba(255, 160, 0, 0.5);
 }
 
 .event-baarat .event-icon-circle {
